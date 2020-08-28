@@ -1,26 +1,16 @@
-for (const it of [1,2,3,4]) {
-    console.log(it)
+import { createElement, render, Component } from './toy-react'
+class MyComponent extends Component {
+    render() {
+        return <div class="demo">
+            你好
+            {this.children}
+        </div>
+    }
 }
 
-const createElement = (tagName, attributes, ...children) => {
-    let dom = document.createElement(tagName)
-    for (const key in attributes) {
-        dom.setAttribute(key, attributes[key]);
-    }
-    console.log(children);
-    for (let item of children) {
-        if (typeof item === 'string') {
-            item = document.createTextNode(item)
-        }
-        dom.appendChild(item)
-    }
-
-    return dom
-}
-
-window.a = (
-  <div class="a" id="b">
-    <div></div>
-    <div></div>
-  </div>
-);
+render(
+  <MyComponent class="a" id="b">
+    <div class="c">222</div>
+    <div>333</div>
+    </MyComponent>
+, document.body);
